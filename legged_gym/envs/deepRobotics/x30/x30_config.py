@@ -3,7 +3,7 @@ from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobot
 
 class X30RoughCfg(LeggedRobotCfg):
     class init_state(LeggedRobotCfg.init_state):
-        pos = [0.0, 0.0, 0.6]  # x,y,z [m]
+        pos = [0.0, 0.0, 0.55]  # x,y,z [m]
         default_joint_angles = {  # = target angles [rad] when action = 0.0
             'FL_HipX_joint': 0.0,  # [rad]
             'HL_HipX_joint': 0.0,  # [rad]
@@ -44,8 +44,22 @@ class X30RoughCfg(LeggedRobotCfg):
         base_height_target = 0.4
 
         class scales(LeggedRobotCfg.rewards.scales):
-            torques = -0.0002
             dof_pos_limits = -10.0
+            termination = -0.0
+            tracking_lin_vel = 2.0
+            tracking_ang_vel = 1.
+            lin_vel_z = -2.0
+            ang_vel_xy = -0.05
+            orientation = -0.
+            torques = -0.000005
+            dof_vel = -0.
+            dof_acc = -2.5e-7
+            base_height = -0.
+            feet_air_time =  2.0
+            collision = -1.
+            feet_stumble = -0.0
+            action_rate = -0.01
+            stand_still = -0.
 
 
 class X30RoughCfgPPO(LeggedRobotCfgPPO):

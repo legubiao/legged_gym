@@ -1,23 +1,23 @@
 from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobotCfgPPO
 
-class Go1RoughCfg( LeggedRobotCfg ):
+class AliengoRoughCfg( LeggedRobotCfg ):
     class init_state( LeggedRobotCfg.init_state ):
-        pos = [0.0, 0.0, 0.42] # x,y,z [m]
-        default_joint_angles = { # = target angles [rad] when action = 0.0
-            'FL_hip_joint': 0.1,   # [rad]
-            'RL_hip_joint': 0.1,   # [rad]
-            'FR_hip_joint': -0.1 ,  # [rad]
-            'RR_hip_joint': -0.1,   # [rad]
+        pos = [0.0, 0.0, 0.45]  # x,y,z [m]
+        default_joint_angles = {  # = target angles [rad] when action = 0.0
+            'FL_hip_joint': 0.0,  # [rad]
+            'RL_hip_joint': 0.0,  # [rad]
+            'FR_hip_joint': 0.0,  # [rad]
+            'RR_hip_joint': 0.0,  # [rad]
 
-            'FL_thigh_joint': 0.67,     # [rad]
-            'RL_thigh_joint': 0.67,   # [rad]
-            'FR_thigh_joint': 0.67,     # [rad]
-            'RR_thigh_joint': 0.67,   # [rad]
+            'FL_thigh_joint': 0.8,  # [rad]
+            'RL_thigh_joint': 0.8,  # [rad]
+            'FR_thigh_joint': 0.8,  # [rad]
+            'RR_thigh_joint': 0.8,  # [rad]
 
-            'FL_calf_joint': -1.3,   # [rad]
-            'RL_calf_joint': -1.3,    # [rad]
-            'FR_calf_joint': -1.3,  # [rad]
-            'RR_calf_joint': -1.3,    # [rad]
+            'FL_calf_joint': -1.5,  # [rad]
+            'RL_calf_joint': -1.5,  # [rad]
+            'FR_calf_joint': -1.5,  # [rad]
+            'RR_calf_joint': -1.5,  # [rad]
         }
 
     class control( LeggedRobotCfg.control ):
@@ -31,8 +31,8 @@ class Go1RoughCfg( LeggedRobotCfg ):
         decimation = 4
 
     class asset( LeggedRobotCfg.asset ):
-        file = '{LEGGED_GYM_ROOT_DIR}/resources/unitree/go1/urdf/robot.urdf'
-        name = "Go1"
+        file = '{LEGGED_GYM_ROOT_DIR}/resources/unitree/aliengo/urdf/robot.urdf'
+        name = "Aliengo"
         foot_name = "foot"
         penalize_contacts_on = ["thigh", "calf"]
         terminate_after_contacts_on = ["base"]
@@ -40,16 +40,16 @@ class Go1RoughCfg( LeggedRobotCfg ):
   
     class rewards( LeggedRobotCfg.rewards ):
         soft_dof_pos_limit = 0.9
-        base_height_target = 0.3
+        base_height_target = 0.45
         class scales( LeggedRobotCfg.rewards.scales ):
             torques = -0.0002
             dof_pos_limits = -10.0
 
-class Go1RoughCfgPPO( LeggedRobotCfgPPO ):
+class AliengoRoughCfgPPO( LeggedRobotCfgPPO ):
     class algorithm( LeggedRobotCfgPPO.algorithm ):
         entropy_coef = 0.01
     class runner( LeggedRobotCfgPPO.runner ):
         run_name = ''
-        experiment_name = 'rough_go1'
+        experiment_name = 'rough_aliengo'
 
   

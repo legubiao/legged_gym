@@ -46,6 +46,6 @@ class A1FlatCfgPPO( A1RoughCfgPPO ):
     class runner( LeggedRobotCfgPPO.runner ):
         run_name = ''
         experiment_name = 'flat_a1'
-        max_iterations = 300
+        max_iterations = 1500
 
   

@@ -40,6 +40,9 @@ from .cassie.cassie_config import CassieRoughCfg, CassieRoughCfgPPO
 from legged_gym.envs.unitree.a1.a1_config import A1RoughCfg, A1RoughCfgPPO
 from legged_gym.envs.unitree.a1.flat.a1_flat_config import A1FlatCfg, A1FlatCfgPPO
 
+from legged_gym.envs.unitree.aliengo.aliengo_config import AliengoRoughCfg, AliengoRoughCfgPPO
+from legged_gym.envs.unitree.aliengo.flat.aliengo_flat_config import AliengoFlatCfg, AliengoFlatCfgPPO
+
 from legged_gym.envs.unitree.go1.go1_config import Go1RoughCfg, Go1RoughCfgPPO
 from legged_gym.envs.unitree.go1.flat.go1_flat_config import Go1FlatCfg, Go1FlatCfgPPO
 
@@ -63,6 +66,9 @@ task_registry.register("cassie", Cassie, CassieRoughCfg(), CassieRoughCfgPPO())
 # Unitree Robots
 task_registry.register("a1", LeggedRobot, A1RoughCfg(), A1RoughCfgPPO())
 task_registry.register("a1_flat", LeggedRobot, A1FlatCfg, A1FlatCfgPPO)
+
+task_registry.register("aliengo", LeggedRobot, AliengoRoughCfg(), AliengoRoughCfgPPO())
+task_registry.register("aliengo_flat", LeggedRobot, AliengoFlatCfg(), AliengoFlatCfgPPO())
 
 task_registry.register("go1", LeggedRobot, Go1RoughCfg(), Go1RoughCfgPPO())
 task_registry.register("go1_flat", LeggedRobot, Go1FlatCfg(), Go1FlatCfgPPO())
