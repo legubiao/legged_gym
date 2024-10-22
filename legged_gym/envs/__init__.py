@@ -28,8 +28,6 @@
 #
 # Copyright (c) 2021 ETH Zurich, Nikita Rudin
 
-from legged_gym import LEGGED_GYM_ROOT_DIR, LEGGED_GYM_ENVS_DIR
-from legged_gym.envs.a1.a1_config import A1RoughCfg, A1RoughCfgPPO
 from .base.legged_robot import LeggedRobot
 from .anymal_c.anymal import Anymal
 from .anymal_c.mixed_terrains.anymal_c_rough_config import AnymalCRoughCfg, AnymalCRoughCfgPPO
@@ -37,15 +35,44 @@ from .anymal_c.flat.anymal_c_flat_config import AnymalCFlatCfg, AnymalCFlatCfgPP
 from .anymal_b.anymal_b_config import AnymalBRoughCfg, AnymalBRoughCfgPPO
 from .cassie.cassie import Cassie
 from .cassie.cassie_config import CassieRoughCfg, CassieRoughCfgPPO
-from .a1.a1_config import A1RoughCfg, A1RoughCfgPPO
 
+# Unitree Robots
+from legged_gym.envs.unitree.a1.a1_config import A1RoughCfg, A1RoughCfgPPO
+from legged_gym.envs.unitree.a1.flat.a1_flat_config import A1FlatCfg, A1FlatCfgPPO
 
-import os
+from legged_gym.envs.unitree.go1.go1_config import Go1RoughCfg, Go1RoughCfgPPO
+from legged_gym.envs.unitree.go1.flat.go1_flat_config import Go1FlatCfg, Go1FlatCfgPPO
+
+from legged_gym.envs.unitree.go2.go2_config import Go2RoughCfg, Go2RoughCfgPPO
+from legged_gym.envs.unitree.go2.flat.go2_flat_config import Go2FlatCfg, Go2FlatCfgPPO
+
+# Deep Robotics Robots
+from legged_gym.envs.deepRobotics.lite3.lite3_config import Lite3RoughCfg, Lite3RoughCfgPPO
+from legged_gym.envs.deepRobotics.lite3.flat.lite3_flat_config import Lite3FlatCfg, Lite3FlatCfgPPO
+
+from legged_gym.envs.deepRobotics.x30.x30_config import X30RoughCfg, X30RoughCfgPPO
+from legged_gym.envs.deepRobotics.x30.flat.x30_flat_config import X30FlatCfg, X30FlatCfgPPO
 
 from legged_gym.utils.task_registry import task_registry
 
-task_registry.register( "anymal_c_rough", Anymal, AnymalCRoughCfg(), AnymalCRoughCfgPPO() )
-task_registry.register( "anymal_c_flat", Anymal, AnymalCFlatCfg(), AnymalCFlatCfgPPO() )
-task_registry.register( "anymal_b", Anymal, AnymalBRoughCfg(), AnymalBRoughCfgPPO() )
-task_registry.register( "a1", LeggedRobot, A1RoughCfg(), A1RoughCfgPPO() )
-task_registry.register( "cassie", Cassie, CassieRoughCfg(), CassieRoughCfgPPO() )
+task_registry.register("anymal_c_rough", Anymal, AnymalCRoughCfg(), AnymalCRoughCfgPPO())
+task_registry.register("anymal_c_flat", Anymal, AnymalCFlatCfg(), AnymalCFlatCfgPPO())
+task_registry.register("anymal_b", Anymal, AnymalBRoughCfg(), AnymalBRoughCfgPPO())
+task_registry.register("cassie", Cassie, CassieRoughCfg(), CassieRoughCfgPPO())
+
+# Unitree Robots
+task_registry.register("a1", LeggedRobot, A1RoughCfg(), A1RoughCfgPPO())
+task_registry.register("a1_flat", LeggedRobot, A1FlatCfg, A1FlatCfgPPO)
+
+task_registry.register("go1", LeggedRobot, Go1RoughCfg(), Go1RoughCfgPPO())
+task_registry.register("go1_flat", LeggedRobot, Go1FlatCfg(), Go1FlatCfgPPO())
+
+task_registry.register("go2", LeggedRobot, Go2RoughCfg(), Go2RoughCfgPPO())
+task_registry.register("go2_flat", LeggedRobot, Go2FlatCfg(), Go2FlatCfgPPO())
+
+# Deep Robotics Robots
+task_registry.register("lite3", LeggedRobot, Lite3RoughCfg(), Lite3RoughCfgPPO())
+task_registry.register("lite3_flat", LeggedRobot, Lite3FlatCfg(), Lite3FlatCfgPPO())
+
+task_registry.register("x30", LeggedRobot, X30RoughCfg(), X30RoughCfgPPO())
+task_registry.register("x30_flat", LeggedRobot, X30FlatCfg(), X30FlatCfgPPO())
