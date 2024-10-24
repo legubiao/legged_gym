@@ -32,11 +32,39 @@ Paper: https://arxiv.org/abs/2109.11978
 ### Virtual Environment
 
 1. Create a new python virtual env with python 3.6, 3.7 or 3.8 (3.8 recommended)
-2. Install pytorch 1.10 with cuda-11.3:
+2. Install `pytorch 1.13.1` with `cuda 11.7`:
 
    ```bash
-   pip3 install torch==1.10.0+cu113 torchvision==0.11.1+cu113 torchaudio==0.10.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html
+   conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.7 -c pytorch -c nvidia
    ```
+
+If you are using ubuntu 22 or later, you may need to config the `LD_LIBRARY_PATH` because the default python version is no longer 3.8 . Below is the turorial to config the `LD_LIBRARY_PATH`:
+
+```bash
+cd $CONDA_PREFIX
+mkdir -p ./etc/conda/activate.d
+mkdir -p ./etc/conda/deactivate.d
+touch ./etc/conda/activate.d/env_vars.sh
+touch ./etc/conda/deactivate.d/env_vars.sh
+```
+
+```bash
+sudo nano ./etc/conda/activate.d/env_vars.sh
+
+# add export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib
+```
+```bash
+sudo nano ./etc/conda/deactivate.d/env_vars.sh
+
+## add
+ORIGINAL_LD_LIBRARY_PATH=$LD_LIBRARY_PATH
+DIRECTORY_TO_REMOVE="$CONDA_PREFIX/lib"
+
+NEW_LD_LIBRARY_PATH=$(echo $LD_LIBRARY_PATH | tr ':' '\n' | grep -v "$DIRECTORY_TO_REMOVE" | tr '\n' ':')
+export LD_LIBRARY_PATH=$NEW_LD_LIBRARY_PATH
+```
+
+Check the `LD_LIBRARY_PATH` by running `echo $LD_LIBRARY_PATH` in the terminal. If the path is correct, you can see the path of the conda environment. After deactivating conda environment, the `LD_LIBRARY_PATH` will be reset to the original path.
 
 ### Install Isaac Gym
 
