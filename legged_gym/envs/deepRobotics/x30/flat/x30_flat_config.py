@@ -17,6 +17,6 @@ class X30FlatCfgPPO( X30RoughCfgPPO ):
     class runner( LeggedRobotCfgPPO.runner ):
         run_name = ''
         experiment_name = 'flat_x30'
-        max_iterations = 300
+        max_iterations = 1500
 
   

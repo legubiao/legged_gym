@@ -136,7 +136,7 @@ python legged_gym/tests/test_env.py --task=a1_flat
 ### 3.2. Play a trained policy:
 
 ```bash
-python legged_gym/scripts/play.py --task=anymal_c_flat
+python legged_gym/scripts/play.py --task=a1_flat
 ```
 
 - By default, the loaded policy is the last model of the last run of the experiment folder.
